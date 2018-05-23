@@ -1,0 +1,35 @@
+//To enter SQL server container:
+sudo docker exec -it mssql "bash"
+
+//Once inside:
+//   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P '<YourNewStrong!Passw0rd>'
+
+/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Sup3r-S3cr3t'
+
+//To create a db
+CREATE DATABASE TestDB
+
+//To see all dbs
+SELECT Name from sys.Databases
+
+//To submit commands
+GO
+
+//To insert data
+USE TestDB
+
+CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+
+INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+
+GO
+
+//To select data
+SELECT * FROM Inventory WHERE quantity > 152;
+
+GO
+
+//To exit
+QUIT
+
+exit
