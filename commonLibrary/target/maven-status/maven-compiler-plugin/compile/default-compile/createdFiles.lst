@@ -1,0 +1,4 @@
+com/skt/finaltask/commonLibrary/model/CustomMessage.class
+com/skt/finaltask/commonLibrary/model/User.class
+com/skt/finaltask/commonLibrary/CommonLibraryApplication.class
+com/skt/finaltask/commonLibrary/configuration/RabbitConfiguration.class

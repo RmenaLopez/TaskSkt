@@ -1,0 +1,25 @@
+
+spring:
+  rabbitmq:
+    port: 5672
+
+  datasource:
+    url: jdbc:sqlserver://localhost;databaseName=tempdb
+    username: "sa"
+    password: "Sup3r-S3cr3t"
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.SQLServer2012Dialect
+
+    hibernate:
+      ddl-auto: create-drop
+
+          #spring.datasource.url=jdbc:sqlserver://localhost;databaseName=testingdb
+          #spring.datasource.username=sa
+          #spring.datasource.password=Sup3r-S3cr3t
+          #spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+          #spring.jpa.show-sql=true
+          #spring.jpa.database-platform=org.hibernate.dialect.SQLServer2012Dialect
+          #spring.jpa.hibernate.ddl-auto = create-drop
