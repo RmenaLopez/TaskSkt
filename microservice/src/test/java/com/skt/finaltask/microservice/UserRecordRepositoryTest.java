@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -36,12 +38,9 @@ public class UserRecordRepositoryTest {
         assertNotNull(userRecordA);
         assertEquals(38, userRecordA.getAge());
 
-        Iterable<UserRecord> users = userRepository.findAll();
-        int count = 0;
-        for(UserRecord p : users){
-            count++;
-        }
-        assertEquals(count, 2);
+        List<UserRecord> users = (List<UserRecord>) userRepository.findAll();
+
+        assertEquals(users.size(), 2);
     }
 
 

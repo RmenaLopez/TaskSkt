@@ -33,7 +33,7 @@ public class UserProducer {
     }
 
     @Scheduled(fixedDelay = 3000L)
-    public void sendMessage() {
+    public void sendMessageToFront() {
         log.info("Sending message...");
 
         final List<User> users = new ArrayList<>();
