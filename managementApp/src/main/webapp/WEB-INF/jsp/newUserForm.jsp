@@ -6,9 +6,13 @@
 
 <body>
 
-<h1>Hello world!</h1>
+<form method="post">
+    Name: <input type="text" name="name">
+    Age: <input type="number" name="age">
+    <input type="submit">
 
-<br>
+</form>
+
 
 <form method="get" action="/users">
     <input type="submit" value="See all users">

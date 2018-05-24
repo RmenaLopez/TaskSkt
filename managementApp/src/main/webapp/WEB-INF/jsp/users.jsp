@@ -1,3 +1,6 @@
+<%@ page import="com.skt.finaltask.commonLibrary.model.User" %>
+<%@ page import="java.util.List" %>
+
 <html>
 
 <head>
@@ -6,7 +9,14 @@
 
 <body>
 
-${users}
+
+<%
+    List<User> userList = (List<User>) request.getAttribute("users");
+    for (User user : userList){  %>
+<span><%= user.toString() %></span>
+<br>
+
+<%}%>
 
 <br>
 <form method="get" action="/">

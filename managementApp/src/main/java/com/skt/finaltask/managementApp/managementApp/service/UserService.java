@@ -27,9 +27,7 @@ public class UserService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
-    @Scheduled(fixedDelay = 3000L)
-    public void addUser() {
-        final User user = new User("Pablito perez", new Random().nextInt(50));
+    public void addUser(User user) {
         log.info("Sending message...");
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_DB, user);
