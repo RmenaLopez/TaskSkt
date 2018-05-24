@@ -1,19 +1,19 @@
-package com.skt.finaltask.microservice.model;
+package com.skt.finaltask.microservice.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user_tbl")
-public class User {
+public class UserRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private int age;
-    public User() {
+    public UserRecord() {
     }
 
-    public User(String name, int age) {
+    public UserRecord(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -40,7 +40,7 @@ public class User {
     }
     @Override
     public String toString() {
-        return "User{" +
+        return "UserRecord{" +
                 ", name='" + name + '\'' +
                 ", Age=" + age +
                 '}';
