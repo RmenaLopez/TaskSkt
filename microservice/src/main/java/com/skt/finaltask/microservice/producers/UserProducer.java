@@ -38,7 +38,8 @@ public class UserProducer {
 
         final List<User> users = new ArrayList<>();
 
-        for (UserRecord userRecord : repository.findAll()){
+
+        for (UserRecord userRecord : repository.getAllUsers()){
             users.add(new User(
                     userRecord.getName(),
                     userRecord.getAge()

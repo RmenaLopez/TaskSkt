@@ -1,6 +1,10 @@
 package com.skt.finaltask.microservice.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table(name = "user_tbl")
@@ -9,11 +13,11 @@ public class UserRecord {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
-    private int age;
+    private Integer age;
     public UserRecord() {
     }
 
-    public UserRecord(String name, int age) {
+    public UserRecord(String name, Integer age) {
         this.name = name;
         this.age = age;
     }

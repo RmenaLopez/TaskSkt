@@ -1,8 +1,11 @@
 package com.skt.finaltask.microservice.entity;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
-public interface UserRepository extends CrudRepository<UserRecord, Integer> {
-    UserRecord findByName(String name);
+public interface UserRepository {
+
+    List<UserRecord> getAllUsers();
+
+    void addUser(UserRecord userRecord);
 
 }

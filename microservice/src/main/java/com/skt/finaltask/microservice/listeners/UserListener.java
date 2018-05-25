@@ -25,6 +25,6 @@ public class UserListener {
         userRecord.setAge(user.getAge());
         userRecord.setName(user.getName());
 
-        repository.save(userRecord);
+        repository.addUser(userRecord);
     }
 }
