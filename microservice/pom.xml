@@ -60,6 +60,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.skt.finaltask.commonLibrary</groupId>
 			<artifactId>commonLibrary</artifactId>
 			<version>1.0</version>

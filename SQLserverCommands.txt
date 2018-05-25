@@ -33,3 +33,5 @@ GO
 QUIT
 
 exit
+
+repository.getAllUsers().stream().map(o -> new UserRecord( (String) o[2], (int) o[1] )).collect(Collectors.toList())
