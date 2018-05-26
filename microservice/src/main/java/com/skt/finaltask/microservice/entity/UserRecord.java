@@ -1,14 +1,21 @@
 package com.skt.finaltask.microservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "user_tbl")
-public class UserRecord {
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "getAllUsers",
+            procedureName = "find_all_users", resultClasses = UserRecord.class),
+        @NamedStoredProcedureQuery(name = "addUser",
+            procedureName = "insert_new_user",
+        parameters = {
+                @StoredProcedureParameter(name = "name", type = String.class, mode = ParameterMode.IN),
+                @StoredProcedureParameter(name = "age", type = Integer.class, mode = ParameterMode.IN)
+        })
+})
+public class UserRecord implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;

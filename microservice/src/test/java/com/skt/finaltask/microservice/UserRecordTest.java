@@ -2,33 +2,37 @@ package com.skt.finaltask.microservice;
 
 import com.skt.finaltask.microservice.entity.UserRecord;
 import com.skt.finaltask.microservice.entity.UserRepository;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.query.Procedure;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
-@ActiveProfiles("test")
 public class UserRecordTest {
 
     @Autowired
     private UserRepository userRepository;
+
     @Before
     public void setUp() throws Exception {
+
         UserRecord userRecord1 = new UserRecord("Alice", 23);
         UserRecord userRecord2 = new UserRecord("Bob", 38);
         //save user, verify has ID value after save
         assertNull(userRecord1.getId());
         assertNull(userRecord2.getId());//null before save
-        this.userRepository.addUser(userRecord1);
-        this.userRepository.addUser(userRecord2);
+        userRepository.addUser(userRecord1.getName(), userRecord1.getAge());
+        userRepository.addUser(userRecord2.getName(), userRecord2.getAge());
     }
 
     @Test

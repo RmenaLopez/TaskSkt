@@ -20,7 +20,7 @@ import java.util.List;
 public class UserProducer {
 
 
-    @Autowired
+    //@Autowired
     UserRepository repository;
 
     private static final Logger log = LoggerFactory.getLogger(UserProducer.class);

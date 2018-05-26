@@ -1,5 +1,7 @@
 
 spring:
+  profiles: default
+  main:
   rabbitmq:
     port: 5672
 
@@ -21,11 +23,3 @@ spring:
 liquibase:
   change-log: classpath:db/liquibase-changelog.xml
 
-
-          #spring.datasource.url=jdbc:sqlserver://localhost;databaseName=testingdb
-          #spring.datasource.username=sa
-          #spring.datasource.password=Sup3r-S3cr3t
-          #spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
-          #spring.jpa.show-sql=true
-          #spring.jpa.database-platform=org.hibernate.dialect.SQLServer2012Dialect
-          #spring.jpa.hibernate.ddl-auto = create-drop
