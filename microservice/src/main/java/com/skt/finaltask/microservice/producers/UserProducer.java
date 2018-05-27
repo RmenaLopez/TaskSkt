@@ -20,7 +20,7 @@ import java.util.List;
 public class UserProducer {
 
 
-    //@Autowired
+    @Autowired
     UserRepository repository;
 
     private static final Logger log = LoggerFactory.getLogger(UserProducer.class);
@@ -38,7 +38,7 @@ public class UserProducer {
 
         final List<User> users = new ArrayList<>();
 
-        // TODO: 26/05/18 Change findAll for getAllUser using stored proc. 
+        // TODO: 26/05/18 Change findAll for getAllUser using stored proc.
         
         for (UserRecord userRecord : repository.findAll()){
             users.add(new User(
