@@ -2,7 +2,6 @@ package com.skt.finaltask.microservice.producers;
 
 import com.skt.finaltask.commonLibrary.configuration.RabbitConfiguration;
 import com.skt.finaltask.commonLibrary.model.User;
-import com.skt.finaltask.microservice.entity.UserRecord;
 import com.skt.finaltask.microservice.entity.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,14 +35,14 @@ public class UserProducer {
     public void sendMessageToFront() {
         log.info("Sending message...");
 
-        final List<User> users = new ArrayList<>();
+        final List<com.skt.finaltask.commonLibrary.model.User> users = new ArrayList<>();
 
         // TODO: 26/05/18 Change findAll for getAllUser using stored proc.
         
-        for (UserRecord userRecord : repository.findAll()){
-            users.add(new User(
-                    userRecord.getName(),
-                    userRecord.getAge()
+        for (User user : repository.findAll()){
+            users.add(new com.skt.finaltask.commonLibrary.model.User(
+                    user.getName(),
+                    user.getAge()
             ));
         }
 

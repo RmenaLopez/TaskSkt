@@ -2,7 +2,6 @@ package com.skt.finaltask.microservice.listeners;
 
 import com.skt.finaltask.commonLibrary.configuration.RabbitConfiguration;
 import com.skt.finaltask.commonLibrary.model.User;
-import com.skt.finaltask.microservice.entity.UserRecord;
 import com.skt.finaltask.microservice.entity.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +18,9 @@ public class UserListener {
 
     @RabbitListener(queues = RabbitConfiguration.QUEUE_USER_TO_DB)
     public void receiveUserToDB(final User user) {
-        log.info("Received UserRecord TO DB: {}", user.toString());
+        log.info("Received User TO DB: {}", user.toString());
 
-        UserRecord userRecord = new UserRecord();
+        User userRecord = new User();
         userRecord.setAge(user.getAge());
         userRecord.setName(user.getName());
 
