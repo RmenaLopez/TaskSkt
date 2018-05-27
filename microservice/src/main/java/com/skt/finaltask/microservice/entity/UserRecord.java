@@ -1,5 +1,7 @@
 package com.skt.finaltask.microservice.entity;
 
+import org.springframework.data.repository.query.Param;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

@@ -31,7 +31,7 @@ public class UserProducer {
     public UserProducer(final RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
-
+/*
     @Scheduled(fixedDelay = 3000L)
     public void sendMessageToFront() {
         log.info("Sending message...");
@@ -48,5 +48,5 @@ public class UserProducer {
 
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_FRONT, users);
-    }
+    }*/
 }

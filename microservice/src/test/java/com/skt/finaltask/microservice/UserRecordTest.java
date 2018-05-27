@@ -7,27 +7,33 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 import static org.junit.Assert.*;
-//@RunWith(SpringRunner.class)
+@ActiveProfiles("test")
+@RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserRecordTest {
 
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
 
     @Before
     public void setUp() throws Exception {
 
-        UserRecord userRecord1 = new UserRecord("Alice", 23);
-        UserRecord userRecord2 = new UserRecord("Bob", 38);
+        UserRecord userRecord1 = new UserRecord("Un pablito o algo asi", 253);
+        UserRecord userRecord2 = new UserRecord("Bobi mac dowg", 738);
         //save user, verify has ID value after save
         assertNull(userRecord1.getId());
         assertNull(userRecord2.getId());//null before save
@@ -42,9 +48,14 @@ public class UserRecordTest {
         assertNotNull(userRecordA);
         assertEquals(38, userRecordA.getAge());
 */
-        List<UserRecord> users = userRepository.getAllUsers();
+        int count = 0;
+        Iterable<UserRecord> users = userRepository.findAll();
 
-        assertEquals(users.size(), 2);
+        for(UserRecord userRecord : users){
+            count++;
+        }
+
+        assertEquals(count, 2);
     }
 
 
