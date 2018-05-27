@@ -5,8 +5,10 @@ import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 public interface UserRepository extends CrudRepository<User, Integer>{
 
     @Procedure( name = "addUser")
