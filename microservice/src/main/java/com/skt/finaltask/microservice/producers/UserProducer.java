@@ -31,15 +31,16 @@ public class UserProducer {
     public UserProducer(final RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
-/*
+
     @Scheduled(fixedDelay = 3000L)
     public void sendMessageToFront() {
         log.info("Sending message...");
 
         final List<User> users = new ArrayList<>();
 
-
-        for (UserRecord userRecord : repository.getAllUsers()){
+        // TODO: 26/05/18 Change findAll for getAllUser using stored proc. 
+        
+        for (UserRecord userRecord : repository.findAll()){
             users.add(new User(
                     userRecord.getName(),
                     userRecord.getAge()
@@ -48,5 +49,5 @@ public class UserProducer {
 
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_FRONT, users);
-    }*/
+    }
 }

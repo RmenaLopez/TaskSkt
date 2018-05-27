@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserListener {
     private static final Logger log = LoggerFactory.getLogger(UserListener.class);
 
-    //@Autowired
+    @Autowired
     private UserRepository repository;
 
     @RabbitListener(queues = RabbitConfiguration.QUEUE_USER_TO_DB)
@@ -25,6 +25,6 @@ public class UserListener {
         userRecord.setAge(user.getAge());
         userRecord.setName(user.getName());
 
-        //repository.addUser(userRecord);
+        repository.addUser(userRecord.getName(), userRecord.getAge());
     }
 }

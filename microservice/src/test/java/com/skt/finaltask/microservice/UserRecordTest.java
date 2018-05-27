@@ -2,25 +2,16 @@ package com.skt.finaltask.microservice;
 
 import com.skt.finaltask.microservice.entity.UserRecord;
 import com.skt.finaltask.microservice.entity.UserRepository;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Profile;
-import org.springframework.data.jpa.repository.query.Procedure;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,11 +34,7 @@ public class UserRecordTest {
 
     @Test
     public void testFetchData(){
-/*
-        UserRecord userRecordA = userRepository.findByName("Bob");
-        assertNotNull(userRecordA);
-        assertEquals(38, userRecordA.getAge());
-*/
+        // TODO: 26/05/18 Implement test for stored procedure getAllUsers()
         int count = 0;
         Iterable<UserRecord> users = userRepository.findAll();
 
