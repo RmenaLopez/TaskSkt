@@ -40,7 +40,7 @@ public class UserProducer {
         // TODO: 26/05/18 Change findAll for getAllUser using stored proc.
         
         for (User user : repository.findAll()){
-            users.add(new com.skt.finaltask.commonLibrary.model.User(
+            users.add(new User(
                     user.getName(),
                     user.getAge()
             ));

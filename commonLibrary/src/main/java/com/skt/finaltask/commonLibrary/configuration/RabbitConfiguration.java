@@ -22,10 +22,16 @@ public class RabbitConfiguration implements RabbitListenerConfigurer {
 
 
     public static final String EXCHANGE_NAME = "appExchange";
-    public static final String QUEUE_USER_TO_FRONT= "appQueueToFront";
-    public static final String QUEUE_USER_TO_DB = "appQueueToDB";
-    public static final String ROUTING_KEY_TO_FRONT = "usersToFront.key";
-    public static final String ROUTING_KEY_TO_DB = "usersToDB.key";
+
+    public static final String QUEUE_USERS_TO_FRONT = "appQueueToFrontUsers";
+    public static final String QUEUE_USERS_TO_DB = "appQueueToDBUsers";
+    public static final String ROUTING_KEY_TO_FRONT_USERS = "usersToFront.key";
+    public static final String ROUTING_KEY_TO_DB_USERS = "usersToDB.key";
+
+    public static final String QUEUE_PRODUCTS_TO_FRONT = "appQueueToFrontProducts";
+    public static final String QUEUE_PRODUCTS_TO_DB = "appQueueToDBProducts";
+    public static final String ROUTING_KEY_TO_FRONT_PRODUCTS = "productsToFront.key";
+    public static final String ROUTING_KEY_TO_DB_PRODUCTS = "productsToDB.key";
 
 
 
@@ -34,22 +40,38 @@ public class RabbitConfiguration implements RabbitListenerConfigurer {
         return new TopicExchange(EXCHANGE_NAME);
     }
 
-    @Bean("Queue_To_Front")
-    public Queue appQueueToFront() {
-        return new Queue(QUEUE_USER_TO_FRONT);
-    }
-
-    @Bean("Queue_To_DB")
-    public Queue appQueueToDB() { return new Queue(QUEUE_USER_TO_DB); }
-
     @Bean
-    public Binding declareBindingToFront() {
-        return BindingBuilder.bind(appQueueToFront()).to(appExchange()).with(ROUTING_KEY_TO_FRONT);
+    public Queue appQueueToFrontUsers() {
+        return new Queue(QUEUE_USERS_TO_FRONT);
     }
 
     @Bean
-    public Binding declareBindingToDB() {
-        return BindingBuilder.bind(appQueueToDB()).to(appExchange()).with(ROUTING_KEY_TO_DB);
+    public Queue appQueueToDBUsers() { return new Queue(QUEUE_USERS_TO_DB); }
+
+    @Bean
+    public Queue appQueueToFrontProducts(){ return new Queue(QUEUE_PRODUCTS_TO_FRONT); }
+
+    @Bean
+    public Queue appQueueToDBProducts(){ return new Queue(QUEUE_PRODUCTS_TO_DB); }
+
+    @Bean
+    public Binding declareBindingToFrontUsers() {
+        return BindingBuilder.bind(appQueueToFrontUsers()).to(appExchange()).with(ROUTING_KEY_TO_FRONT_USERS);
+    }
+
+    @Bean
+    public Binding declareBindingToDBUsers() {
+        return BindingBuilder.bind(appQueueToDBUsers()).to(appExchange()).with(ROUTING_KEY_TO_DB_USERS);
+    }
+
+    @Bean
+    public Binding declareBindingToFrontProducts() {
+        return BindingBuilder.bind(appQueueToFrontUsers()).to(appExchange()).with(ROUTING_KEY_TO_FRONT_PRODUCTS);
+    }
+
+    @Bean
+    public Binding declareBindingToDBProducts() {
+        return BindingBuilder.bind(appQueueToDBUsers()).to(appExchange()).with(ROUTING_KEY_TO_DB_PRODUCTS);
     }
 
     // You can comment all methods below and remove interface's implementation to use the default serialization / deserialization

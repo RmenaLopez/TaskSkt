@@ -24,7 +24,7 @@ public class ProductTest {
     public void setUp() throws Exception {
 
         Product product1 = new Product("Laptop chingona", 100.50, "Lenovo");
-        Product product2 = new Product("Termino chingon", 5.50, "Termus");
+        Product product2 = new Product("Termito chingon", 5.50, "Termus");
 
         //save user, verify has ID value after save
         assertNull(product1.getId());
