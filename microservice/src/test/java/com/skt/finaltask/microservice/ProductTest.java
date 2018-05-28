@@ -1,7 +1,7 @@
 package com.skt.finaltask.microservice;
 
-import com.skt.finaltask.commonLibrary.model.User;
-import com.skt.finaltask.microservice.repository.UserRepository;
+import com.skt.finaltask.commonLibrary.model.Product;
+import com.skt.finaltask.microservice.repository.ProductRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,21 +15,22 @@ import static org.junit.Assert.assertNull;
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserTest {
+public class ProductTest {
 
     @Autowired
-    UserRepository userRepository;
+    ProductRepository repository;
 
     @Before
     public void setUp() throws Exception {
 
-        User user1 = new User("Un pablito o algo asi", 253);
-        User user2 = new User("Bobi mac dowg", 738);
+        Product product1 = new Product("Laptop chingona", 100.50, "Lenovo");
+        Product product2 = new Product("Termino chingon", 5.50, "Termus");
+
         //save user, verify has ID value after save
-        assertNull(user1.getId());
-        assertNull(user2.getId());//null before save
-        userRepository.addUser(user1.getName(), user1.getAge());
-        userRepository.addUser(user2.getName(), user2.getAge());
+        assertNull(product1.getId());
+        assertNull(product2.getId());//null before save
+        repository.addProduct(product1.getDescription(), product1.getPrice(), product1.getBrand());
+        repository.addProduct(product2.getDescription(), product2.getPrice(), product2.getBrand());
     }
 
     @Test
@@ -37,9 +38,9 @@ public class UserTest {
         // TODO: 26/05/18 Implement test for stored procedure getAllUsers()
         int count = 0;
 
-        Iterable<User> users = userRepository.findAll();
+        Iterable<Product> products = repository.findAll();
 
-        for(User user : users){
+        for(Product product: products){
             count++;
         }
 

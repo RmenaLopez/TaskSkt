@@ -2,7 +2,7 @@ package com.skt.finaltask.microservice.producers;
 
 import com.skt.finaltask.commonLibrary.configuration.RabbitConfiguration;
 import com.skt.finaltask.commonLibrary.model.User;
-import com.skt.finaltask.microservice.entity.UserRepository;
+import com.skt.finaltask.microservice.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

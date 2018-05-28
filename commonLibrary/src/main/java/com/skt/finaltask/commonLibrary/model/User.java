@@ -1,18 +1,6 @@
 package com.skt.finaltask.commonLibrary.model;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.NamedStoredProcedureQueries;
-import javax.persistence.NamedStoredProcedureQuery;
-import javax.persistence.StoredProcedureParameter;
-import javax.persistence.ParameterMode;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -36,6 +24,7 @@ public class User implements Serializable{
     private String name;
     @Column(name = "age")
     private int age;
+
     public User() {
     }
 

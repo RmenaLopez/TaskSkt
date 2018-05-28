@@ -1,4 +1,4 @@
-package com.skt.finaltask.microservice.entity;
+package com.skt.finaltask.microservice.repository;
 
 import com.skt.finaltask.commonLibrary.model.User;
 import org.springframework.data.jpa.repository.query.Procedure;

@@ -7,12 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @Service
 public class UserService {
@@ -38,7 +36,6 @@ public class UserService {
         List<User> userList = new ArrayList<>();
         for (User user : users){
             userList.add(new User(user.getName(), user.getAge()));
-            System.out.println(user.toString());
         }
         this.userList = userList;
     }
