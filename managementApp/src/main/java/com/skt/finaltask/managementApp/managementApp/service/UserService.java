@@ -28,10 +28,10 @@ public class UserService {
     public void addUser(User user) {
         log.info("Sending message...");
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
-                RabbitConfiguration.ROUTING_KEY_TO_DB, user);
+                RabbitConfiguration.ROUTING_KEY_TO_DB_USERS, user);
     }
 
-    @RabbitListener(queues = RabbitConfiguration.QUEUE_USER_TO_FRONT)
+    @RabbitListener(queues = RabbitConfiguration.QUEUE_USERS_TO_FRONT)
     private void getUsersFromDB(final List<User> users){
         List<User> userList = new ArrayList<>();
         for (User user : users){

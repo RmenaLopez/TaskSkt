@@ -17,6 +17,9 @@
 <form method="get" action="/users">
     <input type="submit" value="See all users">
 </form>
+<form method="get" action="/new-product">
+    <input type="submit" value="Go to new product form">
+</form>
 
 
 

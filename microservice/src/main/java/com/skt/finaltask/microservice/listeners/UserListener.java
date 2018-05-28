@@ -16,7 +16,7 @@ public class UserListener {
     @Autowired
     private UserRepository repository;
 
-    @RabbitListener(queues = RabbitConfiguration.QUEUE_USER_TO_DB)
+    @RabbitListener(queues = RabbitConfiguration.QUEUE_USERS_TO_DB)
     public void receiveUserToDB(final User user) {
         log.info("Received User TO DB: {}", user.toString());
 

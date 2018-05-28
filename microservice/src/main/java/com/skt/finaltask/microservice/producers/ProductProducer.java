@@ -1,8 +1,8 @@
 package com.skt.finaltask.microservice.producers;
 
 import com.skt.finaltask.commonLibrary.configuration.RabbitConfiguration;
-import com.skt.finaltask.commonLibrary.model.User;
-import com.skt.finaltask.microservice.repository.UserRepository;
+import com.skt.finaltask.commonLibrary.model.Product;
+import com.skt.finaltask.microservice.repository.ProductRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -14,37 +14,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class UserProducer {
+public class ProductProducer {
 
 
     @Autowired
-    UserRepository repository;
+    ProductRepository repository;
 
-    private static final Logger log = LoggerFactory.getLogger(UserProducer.class);
+    private static final Logger log = LoggerFactory.getLogger(ProductRepository.class);
 
     private final RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public UserProducer(final RabbitTemplate rabbitTemplate) {
+    public ProductProducer(final RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
     @Scheduled(fixedDelay = 3000L)
     public void sendMessageToFront() {
-        log.info("Sending message...");
+        log.info("Sending list of products...");
 
-        final List<com.skt.finaltask.commonLibrary.model.User> users = new ArrayList<>();
+        final List<Product> products = new ArrayList<>();
 
         // TODO: 26/05/18 Change findAll for getAllUser using stored proc.
-        
-        for (User user : repository.findAll()){
-            users.add(new User(
-                    user.getName(),
-                    user.getAge()
+
+        for (Product product: repository.findAll()){
+            products.add(new Product(
+                    product.getDescription(),
+                    product.getPrice(),
+                    product.getBrand()
             ));
         }
 
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
-                RabbitConfiguration.ROUTING_KEY_TO_FRONT_USERS, users);
+                RabbitConfiguration.ROUTING_KEY_TO_FRONT_PRODUCTS, products);
     }
 }

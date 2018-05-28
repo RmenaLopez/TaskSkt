@@ -66,12 +66,12 @@ public class RabbitConfiguration implements RabbitListenerConfigurer {
 
     @Bean
     public Binding declareBindingToFrontProducts() {
-        return BindingBuilder.bind(appQueueToFrontUsers()).to(appExchange()).with(ROUTING_KEY_TO_FRONT_PRODUCTS);
+        return BindingBuilder.bind(appQueueToFrontProducts()).to(appExchange()).with(ROUTING_KEY_TO_FRONT_PRODUCTS);
     }
 
     @Bean
     public Binding declareBindingToDBProducts() {
-        return BindingBuilder.bind(appQueueToDBUsers()).to(appExchange()).with(ROUTING_KEY_TO_DB_PRODUCTS);
+        return BindingBuilder.bind(appQueueToDBProducts()).to(appExchange()).with(ROUTING_KEY_TO_DB_PRODUCTS);
     }
 
     // You can comment all methods below and remove interface's implementation to use the default serialization / deserialization

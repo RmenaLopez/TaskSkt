@@ -9,22 +9,26 @@
 
 <body>
 
-
-<%
-    List<User> userList = (List<User>) request.getAttribute("users");
-    for (User user : userList){  %>
-<span><%= user.toString() %></span>
-<br>
-
-<%}%>
+<table border="1px solid black" style="width: 50%">
+    <tr>
+        <th>User name</th>
+        <th>Age</th>
+    </tr>
+    <%
+        List<User> userList = (List<User>) request.getAttribute("users");
+        for (User user : userList){  %>
+    <tr>
+        <th><%=user.getName()  %></th>
+        <th><%=user.getAge()  %></th>
+    </tr>
+    <%}%>
+</table>
 
 <br>
 <form method="get" action="/">
-    <input type="submit" value="Go back no User form">
+    <input type="submit" value="Go back to User form">
 </form>
 
 </body>
-
-
 
 </html>
