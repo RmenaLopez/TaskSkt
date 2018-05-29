@@ -32,7 +32,7 @@
     <input type="submit" value="See all products">
 </form>
 
-<form method="get" action="/">
+<form method="get" action="/new-user">
     <input type="submit" value="Go to new user form">
 </form>
 

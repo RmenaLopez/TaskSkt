@@ -25,8 +25,8 @@
 </table>
 
 <br>
-<form method="get" action="/">
-    <input type="submit" value="Go back to User form">
+<form method="get" action="/new-user">
+    <input type="submit" value="Go to new user form">
 </form>
 
 </body>

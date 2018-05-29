@@ -27,7 +27,7 @@ public class ProductService {
     }
 
     public void addProduct(Product product) {
-        log.info("Sending message...");
+        log.info("Sending product to db...");
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_DB_PRODUCTS, product);
     }

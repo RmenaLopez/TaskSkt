@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public void addUser(User user) {
-        log.info("Sending message...");
+        log.info("Sending user to db...");
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_DB_USERS, user);
     }

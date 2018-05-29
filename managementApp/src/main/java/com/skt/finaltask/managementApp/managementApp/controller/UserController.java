@@ -16,31 +16,33 @@ import static com.skt.finaltask.managementApp.managementApp.controller.ErrorCont
 
 @RestController
 public class UserController {
+    private final String USER_FORM_URL = "/new-user";
+    private final String USER_LIST_URL = "/users";
 
     @Autowired
-    UserService service;
+    private UserService service;
 
-    @GetMapping("/")
+    @GetMapping(USER_FORM_URL)
     public ModelAndView showNewUserForm(ModelAndView modelAndView){
         modelAndView.setViewName("/newUserForm");
         modelAndView.addObject("user", new User());
         return modelAndView;
     }
 
-    @GetMapping("/users")
+    @GetMapping(USER_LIST_URL)
     public ModelAndView showUsers(ModelAndView modelAndView){
         modelAndView.setViewName("/users");
         modelAndView.addObject("users", service.getUsers());
         return modelAndView;
     }
 
-    @PostMapping("/")
+    @PostMapping(USER_FORM_URL)
     public ModelAndView addUser (ModelAndView modelAndView,
                                  @Valid @ModelAttribute("user")User user,
                                  BindingResult result){
 
         if (result.hasErrors()){
-            modelAndView = error("/", result.getAllErrors());
+            modelAndView = error(USER_FORM_URL, result.getAllErrors());
             return modelAndView;
         }
 

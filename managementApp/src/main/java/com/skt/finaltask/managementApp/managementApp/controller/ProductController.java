@@ -16,30 +16,32 @@ import static com.skt.finaltask.managementApp.managementApp.controller.ErrorCont
 
 @RestController
 public class ProductController {
+    private final String PRODUCT_FORM_URL = "/new-product";
+    private final String PRODUCT_LIST_URL = "/products";
 
     @Autowired
-    ProductService service;
+    private ProductService service;
 
-    @GetMapping("/new-product")
+    @GetMapping(PRODUCT_FORM_URL)
     public ModelAndView showNewProductForm(ModelAndView modelAndView){
         modelAndView.setViewName("/newProductForm");
         modelAndView.addObject("product", new Product());
         return modelAndView;
     }
 
-    @GetMapping("/products")
+    @GetMapping(PRODUCT_LIST_URL)
     public ModelAndView showProducts(ModelAndView modelAndView){
         modelAndView.setViewName("/products");
         modelAndView.addObject("products", service.getProducts());
         return modelAndView;
     }
 
-    @PostMapping("/new-product")
+    @PostMapping(PRODUCT_FORM_URL)
     public ModelAndView addProduct (ModelAndView modelAndView,
                                     @Valid @ModelAttribute("product")Product product,
                                     BindingResult result){
         if (result.hasErrors()){
-            modelAndView = error("/new-product", result.getAllErrors());
+            modelAndView = error(PRODUCT_FORM_URL, result.getAllErrors());
             return modelAndView;
         }
         modelAndView.setViewName("/newProductForm");
@@ -47,6 +49,4 @@ public class ProductController {
         service.addProduct(product);
         return modelAndView;
     }
-
-
 }

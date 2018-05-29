@@ -20,10 +20,6 @@ public class UserListener {
     public void receiveUserToDB(final User user) {
         log.info("Received User TO DB: {}", user.toString());
 
-        User userRecord = new User();
-        userRecord.setAge(user.getAge());
-        userRecord.setName(user.getName());
-
-        repository.addUser(userRecord.getName(), userRecord.getAge());
+        repository.addUser(user.getName(), user.getAge());
     }
 }
