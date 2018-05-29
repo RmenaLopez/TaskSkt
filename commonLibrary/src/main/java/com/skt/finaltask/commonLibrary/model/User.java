@@ -1,6 +1,9 @@
 package com.skt.finaltask.commonLibrary.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -20,8 +23,12 @@ public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @NotNull
+    @Size(min = 1, message = "Name can't be empty.")
     @Column(name = "name")
     private String name;
+    @NotNull
+    @Min(value = 18, message = "Must be at least 18 years old to register.")
     @Column(name = "age")
     private int age;
 

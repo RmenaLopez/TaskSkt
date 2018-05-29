@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <html>
 
 <head>
@@ -6,14 +8,25 @@
 
 <body>
 
-<form method="post" action="/new-product">
-    Description: <input type="text" name="description">
-    Price: <input type="number" step="any" name="price">
-    Brand: <input type="text" name="brand">
-    <input type="submit">
-
-</form>
-
+<form:form method="post" modelAttribute="product">
+    <table>
+        <tr>
+            <td><form:label path="description">Product Description </form:label></td>
+            <td><form:input path="description"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="price">Price </form:label></td>
+            <td><form:input path="price"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="brand">Brand </form:label></td>
+            <td><form:input path="brand"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+</form:form>
 
 <form method="get" action="/products">
     <input type="submit" value="See all products">

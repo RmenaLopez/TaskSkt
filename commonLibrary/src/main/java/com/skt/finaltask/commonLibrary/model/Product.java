@@ -1,6 +1,9 @@
 package com.skt.finaltask.commonLibrary.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -21,10 +24,16 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
+    @Size(min = 1, message = "Product description can't be blank.")
     @Column(name = "description")
     private String description;
+    @NotNull
+    @DecimalMin(value = "0.00", message = "Product's price must be positive.")
     @Column(name = "price")
     private Double price;
+    @NotNull
+    @Size(min = 1, message = "Product brand can't be blank.")
     @Column(name = "brand")
     private String brand;
 

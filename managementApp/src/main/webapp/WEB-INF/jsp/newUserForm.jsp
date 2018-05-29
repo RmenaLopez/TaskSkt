@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <html>
 
 <head>
@@ -6,12 +8,23 @@
 
 <body>
 
-<form method="post">
-    Name: <input type="text" name="name">
-    Age: <input type="number" name="age">
-    <input type="submit">
-
-</form>
+<form:form method="post" modelAttribute="user">
+    <table>
+        <tr>
+            <td><form:label path="name">Name</form:label></td>
+            <td><form:input path="name"/></td>
+        </tr>
+        <tr>
+            <td><form:label path="age">Age</form:label></td>
+            <td><form:input path="age"/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"/></td>
+        </tr>
+    </table>
+    
+    
+</form:form>
 
 
 <form method="get" action="/users">
