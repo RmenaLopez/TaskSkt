@@ -3,6 +3,9 @@ package com.skt.finaltask.managementApp.managementApp.controller;
 import com.skt.finaltask.commonLibrary.model.User;
 import com.skt.finaltask.managementApp.managementApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.DefaultMessageSourceResolvable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+
+import java.util.stream.Collectors;
 
 import static com.skt.finaltask.managementApp.managementApp.controller.ErrorController.error;
 
@@ -47,8 +52,9 @@ public class UserController {
         }
 
         modelAndView.setViewName("/newUserForm");
-        modelAndView.addObject(user);
-        service.addUser(new User());
+        modelAndView.addObject(new User());
+        service.addUser(user);
         return modelAndView;
     }
+
 }
