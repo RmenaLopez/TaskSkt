@@ -53,6 +53,7 @@ public class UserController {
 
         modelAndView.setViewName("/newUserForm");
         modelAndView.addObject(new User());
+        modelAndView.setStatus(HttpStatus.CREATED);
         service.addUser(user);
         return modelAndView;
     }
