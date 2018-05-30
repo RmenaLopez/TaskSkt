@@ -9,4 +9,5 @@
         <include file="changelog/01-SP-find-users.xml" relativeToChangelogFile="true"/>
         <include file="changelog/02-SP-insert-user.xml" relativeToChangelogFile="true"/>
         <include file="changelog/03-SP-insert-product.xml" relativeToChangelogFile="true"/>
+        <include file="changelog/04-SP-find-products.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

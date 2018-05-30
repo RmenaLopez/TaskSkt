@@ -1,7 +1,6 @@
 
 spring:
   profiles: default
-  main:
   rabbitmq:
     port: 5672
 
