@@ -36,7 +36,7 @@ public class UserController {
 
     @GetMapping(USER_LIST_URL)
     public ModelAndView showUsers(ModelAndView modelAndView){
-        modelAndView.setViewName("/users");
+        modelAndView.setViewName("/usersList");
         modelAndView.addObject("users", service.getUsers());
         return modelAndView;
     }

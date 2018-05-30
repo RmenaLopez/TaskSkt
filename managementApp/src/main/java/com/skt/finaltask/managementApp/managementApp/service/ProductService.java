@@ -33,7 +33,7 @@ public class ProductService {
     }
 
     @RabbitListener(queues = RabbitConfiguration.QUEUE_PRODUCTS_TO_FRONT)
-    private void getUsersFromDB(final List<Product> products){
+    private void getProductsFromDB(final List<Product> products){
         List<Product> productList= new ArrayList<>();
         for (Product product : products){
             productList.add(new Product(product.getDescription(), product.getPrice(), product.getBrand()));
