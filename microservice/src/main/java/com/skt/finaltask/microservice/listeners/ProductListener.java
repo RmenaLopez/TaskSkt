@@ -13,8 +13,12 @@ import org.springframework.stereotype.Service;
 public class ProductListener {
     private static final Logger log = LoggerFactory.getLogger(ProductListener.class);
 
-    @Autowired
     private ProductRepository repository;
+
+    @Autowired
+    public ProductListener(ProductRepository repository) {
+        this.repository = repository;
+    }
 
     @RabbitListener(queues = RabbitConfiguration.QUEUE_PRODUCTS_TO_DB)
     public void receiveUserToDB(final Product product) {

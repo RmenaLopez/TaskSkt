@@ -10,7 +10,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,11 +33,7 @@ public class ProductService {
 
     @RabbitListener(queues = RabbitConfiguration.QUEUE_PRODUCTS_TO_FRONT)
     private void getProductsFromDB(final List<Product> products){
-        List<Product> productList= new ArrayList<>();
-        for (Product product : products){
-            productList.add(new Product(product.getDescription(), product.getPrice(), product.getBrand()));
-        }
-        this.productList = productList;
+        this.productList = products;
     }
 
     public List<Product> getProducts(){

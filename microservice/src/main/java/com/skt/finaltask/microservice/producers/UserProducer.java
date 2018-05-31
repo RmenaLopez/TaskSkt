@@ -32,7 +32,7 @@ public class UserProducer {
     public void sendMessageToFront() {
         log.info("Sending message...");
 
-        final List<com.skt.finaltask.commonLibrary.model.User> users = new ArrayList<>();
+        final List<User> users = new ArrayList<>();
 
         // TODO: 26/05/18 Change findAll for getAllUser using stored proc.
         

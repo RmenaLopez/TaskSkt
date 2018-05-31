@@ -9,7 +9,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,11 +32,7 @@ public class UserService {
 
     @RabbitListener(queues = RabbitConfiguration.QUEUE_USERS_TO_FRONT)
     private void getUsersFromDB(final List<User> users){
-        List<User> userList = new ArrayList<>();
-        for (User user : users){
-            userList.add(new User(user.getName(), user.getAge()));
-        }
-        this.userList = userList;
+        this.userList = users;
     }
 
     public List<User> getUsers(){
