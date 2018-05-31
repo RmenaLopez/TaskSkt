@@ -16,17 +16,16 @@ import java.util.List;
 @Service
 public class ProductProducer {
 
-
-    @Autowired
-    ProductRepository repository;
+    private ProductRepository repository;
 
     private static final Logger log = LoggerFactory.getLogger(ProductRepository.class);
 
     private final RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public ProductProducer(final RabbitTemplate rabbitTemplate) {
+    public ProductProducer(final RabbitTemplate rabbitTemplate, ProductRepository productRepository) {
         this.rabbitTemplate = rabbitTemplate;
+        this.repository = productRepository;
     }
 
     @Scheduled(fixedDelay = 3000L)
@@ -38,11 +37,7 @@ public class ProductProducer {
         // TODO: 26/05/18 Change findAll for getAllUser using stored proc.
 
         for (Product product: repository.findAll()){
-            products.add(new Product(
-                    product.getDescription(),
-                    product.getPrice(),
-                    product.getBrand()
-            ));
+            products.add(product);
         }
 
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
