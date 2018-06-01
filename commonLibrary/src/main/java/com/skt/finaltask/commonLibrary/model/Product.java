@@ -37,7 +37,7 @@ public class Product implements Serializable {
     @Size(min = 1, message = "Product description can't be blank.")
     @Column(name = "description")
     private String description;
-    @NotNull
+    @NotNull(message = "Product's price can't be blank")
     @DecimalMin(value = "0.00", message = "Product's price must be positive.")
     @Column(name = "price")
     private Double price;
