@@ -37,6 +37,6 @@ public class ProductProducer {
 
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_FRONT_PRODUCTS,
-                new ArrayList<Product>((Collection<? extends Product>) repository.findAll()));
+                repository.getAllProducts());
     }
 }

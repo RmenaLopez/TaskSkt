@@ -1,6 +1,7 @@
 package com.skt.finaltask.microservice.repository;
 
 import com.skt.finaltask.commonLibrary.model.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,6 +16,6 @@ public interface UserRepository extends CrudRepository<User, Integer>{
         void addUser(@Param("name") String name, @Param("age") Integer age);
 
     // TODO: 26/05/18 Make this procedure work!!
-    @Procedure( procedureName = "getAllUsers")
+    @Query(nativeQuery = true, value = "find_all_users")
         List<User> getAllUsers();
 }

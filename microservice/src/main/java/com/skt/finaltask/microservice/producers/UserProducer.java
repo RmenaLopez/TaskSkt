@@ -38,6 +38,6 @@ public class UserProducer {
 
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_FRONT_USERS,
-                new ArrayList<User>((Collection<? extends User>) repository.findAll()));
+                repository.getAllUsers());
     }
 }

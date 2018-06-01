@@ -13,7 +13,7 @@
             CREATE PROCEDURE insert_new_product (@Description VARCHAR(200), @Price FLOAT, @Brand VARCHAR(50) )
             AS
             BEGIN
-            INSERT INTO products_tbl (description, price, brand)
+            INSERT INTO product_tbl (description, price, brand)
             VALUES (@Description,@Price,@Brand);
             END
         </createProcedure>
