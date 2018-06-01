@@ -16,7 +16,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "products_tbl")
+@Table(name = "product_tbl")
 @NamedStoredProcedureQueries({
         @NamedStoredProcedureQuery(name = "getAllProducts",
                 procedureName = "find_all_products", resultClasses = Product.class),

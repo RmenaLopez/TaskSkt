@@ -6,6 +6,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
         <changeSet id="insert_user" author="rmena">
+            <sql>
+                DROP PROCEDURE IF EXISTS insert_new_user
+            </sql>
             <createProcedure>
                 CREATE PROCEDURE insert_new_user (@Name VARCHAR(50), @Age INTEGER)
                 AS
