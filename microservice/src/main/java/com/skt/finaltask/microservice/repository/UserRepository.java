@@ -15,7 +15,6 @@ public interface UserRepository extends CrudRepository<User, Integer>{
     @Procedure( name = "addUser")
         void addUser(@Param("name") String name, @Param("age") Integer age);
 
-    // TODO: 26/05/18 Make this procedure work!!
     @Query(nativeQuery = true, value = "find_all_users")
         List<User> getAllUsers();
 }

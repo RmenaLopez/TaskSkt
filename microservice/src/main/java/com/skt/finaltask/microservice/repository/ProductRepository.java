@@ -17,7 +17,6 @@ public interface ProductRepository extends CrudRepository<Product, Integer> {
                         @Param("price") Double price,
                         @Param("brand") String brand);
 
-    // TODO: 26/05/18 Make this procedure work!!
     @Query(nativeQuery = true, value = "find_all_products")
         List<Product> getAllProducts();
 }

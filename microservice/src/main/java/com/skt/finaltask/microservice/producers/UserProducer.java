@@ -32,9 +32,7 @@ public class UserProducer {
 
     @Scheduled(fixedDelay = 3000L)
     public void sendMessageToFront() {
-        log.info("Sending message...");
-
-        // TODO: 26/05/18 Change findAll for getAllUser using stored proc.
+        log.info("Sending user list...");
 
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY_TO_FRONT_USERS,
